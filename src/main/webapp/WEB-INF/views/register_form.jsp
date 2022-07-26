@@ -9,9 +9,9 @@
 <body>register_form.jsp<br>
 
 	<form action="register" method="post">
-		<input type="text" name="id"><br>
-		<input type="password" name="pwd"><br>
-		<input type="text" name="name"><br>
+		<input type="text" name="id" placeholder="id"><br>
+		<input type="password" name="pwd" placeholder="pwd"><br>
+		<input type="text" name="name" placeholder="name"><br>
 		<input type="submit" value="가입">
 	</form>
 

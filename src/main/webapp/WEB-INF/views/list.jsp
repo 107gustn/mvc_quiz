@@ -24,7 +24,9 @@
 	 	<tr>
 	 		<td>${dto.id }</td>
 	 		<td>${dto.pwd }</td>
-	 		<td>${dto.name }</td>
+	 		<td>
+	 			<a href="info?id=${dto.id }">${dto.name }</a>
+	 		</td>
 	 	</tr>
 	 	</c:forEach>
 	 	<tr>

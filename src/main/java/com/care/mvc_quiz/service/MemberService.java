@@ -23,9 +23,36 @@ public class MemberService {
 	}
 	
 	public void list(Model model) {
-		//ArrayList<MemberDTO> list = dao.list(); //모든값을 list에 저장
-		//model.addAttribute("list", list ); //모든 값 list 정보 값을 list라는 이름의 key로 model에 저장
-		model.addAttribute("list", dao.list() );
+		ArrayList<MemberDTO> list = dao.list(); //모든값을 list에 저장
+		model.addAttribute("list", list ); //모든 값 list 정보 값을 list라는 이름의 key로 model에 저장
+		//model.addAttribute("list", dao.list() );//select * from table
 	}
-
+//	public ArrayList<MemberDTO> getList(){
+//		return dao.list();
+//	}
+	
+	public void info(Model model, String id) {
+		//select * from table where id = id
+		ArrayList<MemberDTO> list = dao.list(); //모든 정보를 가져옴
+		for(MemberDTO dto : list) { //list값을 하나씩 dto에 저장해줌
+			if( dto.getId().equals(id) ) {
+				model.addAttribute("dto", dto); //한명에 대한 정보를 가져옴 //해당 객체 dto라는 이름으로 저장된다
+				break;
+			}
+		}
+	}
+	
+	public int logchk(MemberDTO dto) {
+		ArrayList<MemberDTO> list = dao.list(); //모든 정보를 가져옴
+		for(MemberDTO d : list) { //list값을 하나씩 dto에 저장해줌
+			if( d.getId().equals(dto.getId()) ) { //해당하는 아이디 존재시
+				if( d.getPwd().equals(dto.getPwd())) { //비밀번호 비교
+					return 0; //모두 일치
+				}
+				return 1; //비밀번호 오류
+			}
+		}
+		return -1; //아이디 오류
+	}
+	
 }
